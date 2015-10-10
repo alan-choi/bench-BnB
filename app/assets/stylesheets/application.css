@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+.nav {
+  float: left;
+  height: 30px;
+  font-family: Oxygen;
+  font-weight: 700;
+}

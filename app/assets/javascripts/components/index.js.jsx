@@ -18,8 +18,7 @@ window.Index = React.createClass({
       return <div>{bench.name}</div>;
     });
     return (
-      <div>
-        This is an Index!
+      <div className="bench-index">
         {benches}
       </div>
     );
