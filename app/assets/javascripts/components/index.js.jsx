@@ -15,7 +15,12 @@ window.Index = React.createClass({
 
   render: function(){
     var benches = this.state.benches.map(function(bench){
-      return <div>{bench.name}</div>;
+      return (
+        <ul className="bench-item">
+          <li className="bench-name">{bench.name}</li>
+          <li>{bench.description}</li>
+        </ul>
+      );
     });
     return (
       <div className="bench-index">

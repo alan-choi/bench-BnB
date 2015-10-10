@@ -15,8 +15,18 @@
  */
 
 .nav {
-  float: left;
-  height: 30px;
+  /*float: left;*/
+  padding-left: 20px;
+  height: 40px;
   font-family: Oxygen;
   font-weight: 700;
+  color: #009966;
+  font-size: 18px;
+  /*background-color: lightgray;*/
+}
+
+body {
+  width: 980px;
+  margin: auto;
+  padding-top: 20px;
 }
