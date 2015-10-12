@@ -1,4 +1,6 @@
 var Map = React.createClass({
+  mixins: [ReactRouter.History],
+
   getInitialState: function() {
     return { markers: [] };
   },
@@ -17,6 +19,13 @@ var Map = React.createClass({
     }.bind(this));
     BenchStore.addChangeListner(this.deleteMarkers);
     BenchStore.addChangeListner(this.addMarkers);
+
+    this.map.addListener('click', function(e){
+      var lat = e.latLng.lat().toFixed(5);
+      var lng = e.latLng.lng().toFixed(5);
+      var coords = { lat: lat, lng: lng };
+      this.history.pushState(null, "benches/new", coords);
+    }.bind(this));
   },
 
   filterMapBounds: function() {
@@ -59,9 +68,27 @@ var Map = React.createClass({
     this.setState({ markers: currentMarkers });
   },
 
+  handleClick: function(event){
+    event.preventDefault();
+    this.map.addListener('click', function(e){
+      var lat = e.latLng.lat().toFixed(5);
+      var lng = e.latLng.lng().toFixed(5);
+      var cords = { lat: lat, lng: lng };
+      this.props.history.pushState(null, "benches/new", cords);
+    }.bind(this));
+  },
+
   render: function() {
+    var Link = ReactRouter.Link;
+
     return(
-      <div className="map" ref="map">
+      <div className="map-container">
+        <Link className="add-bench-button" to="benches/new">
+          Add Bench
+        </Link>
+
+        <div className="map" ref="map">
+        </div>
       </div>
     );
   }
