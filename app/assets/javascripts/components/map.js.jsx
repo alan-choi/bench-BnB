@@ -17,6 +17,7 @@ var Map = React.createClass({
       var bounds = this.filterMapBounds();
       ApiUtil.fetchBenches(bounds);
     }.bind(this));
+
     BenchStore.addChangeListner(this.deleteMarkers);
     BenchStore.addChangeListner(this.addMarkers);
 

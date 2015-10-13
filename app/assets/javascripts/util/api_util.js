@@ -1,12 +1,14 @@
 ApiUtil = {
-  fetchBenches: function(currentMapBounds){
+  fetchBenches: function(currentMapBounds, minSeats){
+    
     $.ajax({
       url: '/api/benches',
       type: 'get',
       dataType: 'json',
-      data: {currentMapBounds: currentMapBounds},
+      data: {bounds: currentMapBounds, min: minSeats },
       success: function(benchData) {
         ApiActions.receiveAllBenches(benchData);
+        FilterActions.updateFilter({bounds: currentMapBounds});
       }
     });
   },
@@ -22,5 +24,5 @@ ApiUtil = {
         console.log(newBenchData);
       }
     });
-  }
+  },
 };

@@ -1,6 +1,13 @@
 class Api::BenchesController < ApplicationController
   def index
-    @benches = Bench.in_bounds(params[:currentMapBounds])
+    if params[:min].nil?
+      default_min = {min: 0}
+      filter = params[:bounds].merge(default_min)
+    else
+      filter = params[:bounds]
+      filter[:min] = params[:min]
+    end
+    @benches = Bench.in_bounds(filter)
     render json: @benches
   end
 

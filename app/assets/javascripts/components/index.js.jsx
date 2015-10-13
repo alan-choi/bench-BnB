@@ -19,6 +19,7 @@ window.Index = React.createClass({
         <ul className="bench-item">
           <li className="bench-name">{bench.name}</li>
           <li>{bench.description}</li>
+          <li>{bench.seating}</li>
         </ul>
       );
     });
